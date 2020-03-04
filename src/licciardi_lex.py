@@ -176,7 +176,8 @@ lookupOperator = {
 }
 
 lookupEquality = {
-    "=": Token.EQUALITY,
+    '=': Token.ASSIGNMENT,
+    "==": Token.EQUALITY,
     "!=": Token.INEQUALITY,
     "<": Token.LESS,
     "<=": Token.LESS_EQUAL,
@@ -218,7 +219,7 @@ def getChar(input):
         return (c, CharClass.BLANK)
     if c in ['(', ')', '[', ']', '{', '}']:
         return (c, CharClass.DELIMITER)
-    if c in ['=', '!=', '<', '<=', '>', '>=']:
+    if c in ['==', '!=', '<', '<=', '>', '>=', '=']:
         return (c, CharClass.EQUALITY)
     if c in ['main', 'if', 'else', 'while', 'int', 'float', 'char', 'boolean']:
         return (c, CharClass.WORD)
@@ -241,7 +242,7 @@ def addChar(input, lexeme):
     if len(input) > 0:
         lexeme += input[0]
         input = input[1:]
-    return (input, lexeme)
+    return input, lexeme
 
 
 # returns the next (lexeme, token) pair or ("", EOF) if EOF is reached
@@ -366,7 +367,7 @@ def loadTable(input):
             if len(value) == 0:
                 value = None
             gotos[key] = value
-    return (actions, gotos)
+    return actions, gotos
 
 
 # prints the given actions, one per line
