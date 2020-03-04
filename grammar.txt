@@ -1,0 +1,61 @@
+P -> int main ( ) { Z' Z* }
+Z' -> D
+Z' -> Z' D
+D -> Y I ;
+Y -> int
+Y -> bool
+Y -> float
+Y -> char
+I -> id
+I -> id [ il ]
+I -> id , I
+I -> id [ il ] , I
+Z* -> S
+Z* -> Z* S
+S -> A
+S -> I'
+S -> W'
+S -> { Z }
+A -> id = E ;
+A -> id [ E ] = E ;
+I' -> if ( E ) S
+I' -> if ( E ) else S
+W' -> while ( E ) S
+Z -> Z S
+Z -> S
+E -> X
+X -> C || X
+X -> C
+C -> X'
+X' -> Q && X'
+X' -> Q
+Q -> R
+Q -> R Q' R
+R -> A'
+R -> A' R' A'
+A' -> X*
+X* -> T O X*
+X* -> T
+T -> W
+W -> F
+W -> F O' W
+F -> id
+F -> id [ E ]
+F -> L
+F -> { E }
+L -> il
+L -> B
+L -> fl
+L -> cl
+B -> true
+B -> false
+O' -> *
+O' -> /
+O -> +
+O -> -
+R' -> <
+R' -> <=
+R' -> >
+R' -> >=
+Q' -> ==
+Q' -> !=
